@@ -8,7 +8,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PokerManagerTest {
-    Hand hand = new Hand();
+    private Hand hand;
+    private PokerManager pokerManager;
+
+    public PokerManagerTest() {
+        hand = new Hand();
+        pokerManager = new PokerManager(hand);
+    }
 
     @Test
     void shouldBeAbleToCreateHand() {
@@ -56,13 +62,19 @@ public class PokerManagerTest {
 
     @Test
     void shouldBeAbleToAllocateCardToHand() {
-//      arrange
-        PokerManager pokerManager = new PokerManager();
 //        act
         boolean result = pokerManager.allocateCards();
+        List<String> expectedCards = hand.getCards();
+        List<String> actualCards = Arrays.asList("CK", "D7", "C7", "DK", "SA");
 //        assert
         Assertions.assertTrue(result);
+        Assertions.assertEquals(actualCards, expectedCards);
+        Assertions.assertEquals(5, expectedCards.size());
+
     }
+
+
+
 
 
 }
