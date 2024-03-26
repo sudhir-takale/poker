@@ -5,7 +5,14 @@ import java.util.List;
 
 public class Hand {
 
+    private List<String> cards;
+
+    public Hand() {
+
+        cards = new ArrayList<>();
+    }
+
     public List<String> getCards() {
-        return new ArrayList<>();
+        return this.cards;
     }
 }
