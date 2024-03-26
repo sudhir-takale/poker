@@ -1,6 +1,7 @@
 package com.amaap.poker;
 
 import com.amaap.poker.domain.Hand;
+import com.amaap.poker.domain.service.HandEvaluator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -10,10 +11,12 @@ import java.util.List;
 public class PokerManagerTest {
     private Hand hand;
     private PokerManager pokerManager;
+    private HandEvaluator handEvaluator;
 
     public PokerManagerTest() {
         hand = new Hand();
-        pokerManager = new PokerManager(hand);
+        handEvaluator = new HandEvaluator();
+        pokerManager = new PokerManager(hand, handEvaluator);
     }
 
     @Test
@@ -73,8 +76,15 @@ public class PokerManagerTest {
 
     }
 
-
-
+    @Test
+    void shouldBeAbleToEvaluateTheBestHand() {
+//        arrange
+        pokerManager.allocateCards();
+//        act
+        String bestHand = pokerManager.getBestHand();
+//        assert
+        Assertions.assertEquals("O", bestHand);
+    }
 
 
 }
