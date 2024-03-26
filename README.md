@@ -1,10 +1,11 @@
 # Poker Best Hand Extension
 Change the poker program to include following new hand rankings: <br>
 
-   - Straight flush: All cards in the same suit, and in sequence
-  -  Two pair: Two pairs of cards have the same rank <br>
+- Straight flush: All cards in the same suit, and in sequence
+- Two pair: Two pairs of cards have the same rank <br>
 
-  ### The new hand rankings are:
+### The new hand rankings are:
+
 1. Straight flush: All cards in the same suit, and in sequence
 2. Four of a kind: Four of the cards have the same rank
 3. Full House: Three cards of one rank, the other two of another rank
@@ -22,3 +23,27 @@ Change the poker program to include following new hand rankings: <br>
 
 
 ------------------------------------------------------------------------------------------------------
+
+- Classes :
+   - Hand 
+      - states 
+      - List<String> cards
+      - allocateCards
+
+   - BestHandCalculator 
+      - evaluateBestHand(list<string> cards)
+      - all methods to check for best hand
+     
+   - PokerManager 
+      - allocateCards
+      - getBestHand(List<String>cards)
+   
+
+- Process :
+- create Configurations for 52 cards
+   - fill the cards list randomly 
+- create hand classes
+   - method to fill cards
+- evaluateBestHand(list<string> cards)
+- displayTheBestHand
+
