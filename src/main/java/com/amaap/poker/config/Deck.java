@@ -1,3 +1,5 @@
+package com.amaap.poker.config;
+
 import java.util.ArrayList;
 import java.util.List;
 
