@@ -49,7 +49,14 @@ public class HandEvaluator {
     }
 
     private boolean isStraightFlush(List<String> cards) {
-        return false;
+        boolean isStraight = isStraight(cards);
+        Map<Character, Integer> score = new HashMap<>();
+        for (String card : cards) {
+            char secondChar = card.charAt(0);
+            score.put(secondChar, score.getOrDefault(secondChar, 0) + 1);
+        }
+        boolean isStraightFlush = score.containsValue(5);
+        return (isStraight && isStraightFlush);
     }
 
     private boolean isFourOfAKind(List<String> cards) {
@@ -65,7 +72,12 @@ public class HandEvaluator {
     }
 
     private boolean isFlush(List<String> cards) {
-        return false;
+        Map<Character, Integer> score = new HashMap<>();
+        for (String card : cards) {
+            char secondChar = card.charAt(0);
+            score.put(secondChar, score.getOrDefault(secondChar, 0) + 1);
+        }
+        return score.containsValue(5);
     }
 
     private boolean isStraight(List<String> cards) {
