@@ -5,7 +5,7 @@ import com.amaap.poker.domain.service.HandEvaluator;
 import com.amaap.poker.domain.service.exception.CardNotFoundException;
 import com.amaap.poker.domain.service.exception.InvalidCardDeckException;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class PokerManager {
     private Hand hand;
@@ -14,16 +14,16 @@ public class PokerManager {
     public PokerManager(Hand hand, HandEvaluator handEvaluator) {
         this.hand = hand;
         this.handEvaluator = handEvaluator;
-
     }
 
-    public boolean allocateCards() {
-        hand.getCards().addAll(Arrays.asList("CK", "D7", "C7", "DK", "SA"));
-        return true;
+    public List<String> allocateCards() {
+        return hand.getCards();
+
     }
 
     public String getBestHand() throws InvalidCardDeckException, CardNotFoundException {
-        allocateCards();
-        return handEvaluator.getBestHand(hand.getCards());
+        List<String> cards = allocateCards();
+        return handEvaluator.getBestHand(cards);
     }
+
 }
