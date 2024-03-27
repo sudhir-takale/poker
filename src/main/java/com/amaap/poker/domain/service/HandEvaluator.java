@@ -121,26 +121,26 @@ public class HandEvaluator {
 
     private boolean isTwoPair(List<String> cards) {
         Map<Character, Integer> score = getFilledCharactermMap(cards);
-        int count1 = 0;
-        int count2 = 0;
+        int countOne = 0;
+        int countTwo = 0;
         for (int value : score.values()) {
             if (value == 1) {
-                count1++;
-            } else if (value == 2) count2++;
+                countOne++;
+            } else if (value == 2) countTwo++;
         }
-        return count1 == 1 && count2 == 2;
+        return countOne == 1 && countTwo == 2;
     }
 
     private boolean isPair(List<String> cards) {
         Map<Character, Integer> score = getFilledCharactermMap(cards);
-        int count1 = 0;
-        int count2 = 0;
+        int countOne = 0;
+        int countTwo = 0;
         for (int value : score.values()) {
             if (value == 1) {
-                count1++;
-            } else if (value == 2) count2++;
+                countOne++;
+            } else if (value == 2) countTwo++;
         }
-        return count1 == 3 && count2 == 1;
+        return countOne == 3 && countTwo == 1;
     }
 
     private String getHighCard(List<String> cards) {
