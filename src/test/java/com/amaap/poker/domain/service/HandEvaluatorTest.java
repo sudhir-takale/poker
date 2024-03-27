@@ -90,5 +90,13 @@ class HandEvaluatorTest {
 //        assert
         Assertions.assertEquals("full-house", bestHand);
     }
+    @Test
+    void shouldBeAbleToGetCorrectBestHandIsThreeOfKind() throws InvalidCardDeckException,
+            CardNotFoundException {
+//               act
+        String bestHand = handEvaluator.getBestHand(Arrays.asList("D2", "S2", "D2", "DA", "DJ"));
+//        assert
+        Assertions.assertEquals("full-house", bestHand);
+    }
 
 }

@@ -116,8 +116,13 @@ public class HandEvaluator {
 
     private boolean isThreeOfAKind(List<String> cards) {
 
-        return false;
+        Map<Character, Integer> score = new HashMap<>();
+        for (String card : cards) {
+            char secondChar = card.charAt(1);
+            score.put(secondChar, score.getOrDefault(secondChar, 0) + 1);
+        }
 
+        return score.containsValue(1) && score.containsValue(3);
     }
 
     private boolean isTwoPair(List<String> cards) {
