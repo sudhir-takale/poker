@@ -60,7 +60,13 @@ public class HandEvaluator {
     }
 
     private boolean isFourOfAKind(List<String> cards) {
-        return false;
+        Map<Character, Integer> score = new HashMap<>();
+        for (String card : cards) {
+            char secondChar = card.charAt(1);
+            score.put(secondChar, score.getOrDefault(secondChar, 0) + 1);
+        }
+
+        return score.containsValue(4) && score.containsValue(1);
 
 
     }
@@ -119,7 +125,13 @@ public class HandEvaluator {
     }
 
     private boolean isPair(List<String> cards) {
-        return false;
+        Map<Character, Integer> score = new HashMap<>();
+        for (String card : cards) {
+            char secondChar = card.charAt(1);
+            score.put(secondChar, score.getOrDefault(secondChar, 0) + 1);
+        }
+
+        return (score.containsValue(1) && score.containsValue(2));
 
     }
 
