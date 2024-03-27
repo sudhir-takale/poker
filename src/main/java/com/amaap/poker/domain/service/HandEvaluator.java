@@ -15,13 +15,15 @@ public class HandEvaluator {
             throw new InvalidCardDeckException("Card Deck is not Valid check number of cards!");
         }
 
-
-        Collections.sort(cards, new Comparator<String>() {
+        cards.sort(new Comparator<String>() {
             @Override
             public int compare(String card1, String card2) {
-                return card1.charAt(1) - card2.charAt(1);
+                char rank1 = card1.charAt(1);
+                char rank2 = card2.charAt(1);
+                return getValue(rank1) - getValue(rank2);
             }
         });
+        cards.forEach(System.out::println);
 
         if (isStraightFlush(cards)) {
             return "straight-flush";
@@ -87,7 +89,12 @@ public class HandEvaluator {
     }
 
     private String getHighCard(List<String> cards) {
-        return null;
+        char bestHand = cards.get(cards.size() - 1).charAt(1);
+        return String.valueOf(bestHand);
+    }
+    private static int getValue(char rank) {
+        String order = "23456789TJQKA";
+        return order.indexOf(rank);
     }
 
 

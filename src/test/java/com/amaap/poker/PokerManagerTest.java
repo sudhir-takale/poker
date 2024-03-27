@@ -2,6 +2,8 @@ package com.amaap.poker;
 
 import com.amaap.poker.domain.Hand;
 import com.amaap.poker.domain.service.HandEvaluator;
+import com.amaap.poker.domain.service.exception.CardNotFoundException;
+import com.amaap.poker.domain.service.exception.InvalidCardDeckException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -77,7 +79,7 @@ public class PokerManagerTest {
     }
 
     @Test
-    void shouldBeAbleToEvaluateTheBestHand() {
+    void shouldBeAbleToEvaluateTheBestHand() throws InvalidCardDeckException, CardNotFoundException {
 //        arrange
         pokerManager.allocateCards();
 //        act

@@ -31,11 +31,12 @@ class HandEvaluatorTest {
 
 
     @Test
-    void shouldBeAbleToGetBestHand() throws CardNotFoundException, InvalidCardDeckException {
+    void shouldBeAbleToGetHighHandForCorrectInput() throws CardNotFoundException, InvalidCardDeckException {
 //        act
-        String bestHand = handEvaluator.getBestHand(Arrays.asList("S1", "S2", "S3", "S4", "S5"));
+        String bestHand = handEvaluator.getBestHand(Arrays.asList("S2", "D5", "C7", "ST", "HA"));
+//        String bestHand = handEvaluator.getBestHand(Arrays.asList("S1", "S2", "S3", "S4", "S5"));
 //        assert
-        Assertions.assertEquals("full-house", bestHand);
+        Assertions.assertEquals("high-card-A", bestHand);
     }
 
 
