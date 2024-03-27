@@ -34,14 +34,13 @@ class HandEvaluatorTest {
     void shouldBeAbleToGetHighHandForCorrectInput() throws CardNotFoundException, InvalidCardDeckException {
 //        act
         String bestHand = handEvaluator.getBestHand(Arrays.asList("S2", "D5", "C7", "ST", "HA"));
-//        String bestHand = handEvaluator.getBestHand(Arrays.asList("S1", "S2", "S3", "S4", "S5"));
 //        assert
         Assertions.assertEquals("high-card-A", bestHand);
     }
 
     @Test
     void shouldBeAbleToGetCorrectBestHandIfCardAreIsStraight() throws InvalidCardDeckException, CardNotFoundException {
-//               act
+//        act
         String bestHand = handEvaluator.getBestHand(Arrays.asList("D1", "S2", "S3", "S4", "S5"));
 //        assert
         Assertions.assertEquals("straight", bestHand);
@@ -50,7 +49,7 @@ class HandEvaluatorTest {
     @Test
     void shouldBeAbleToGetCorrectBestHandIfHandIsStraightFlush() throws InvalidCardDeckException,
             CardNotFoundException {
-//               act
+//        act
         String bestHand = handEvaluator.getBestHand(Arrays.asList("S1", "S2", "S3", "S4", "S5"));
 //        assert
         Assertions.assertEquals("straight-flush", bestHand);
@@ -59,7 +58,7 @@ class HandEvaluatorTest {
     @Test
     void shouldBeAbleToGetCorrectBestHandIfHandIsFlush() throws InvalidCardDeckException,
             CardNotFoundException {
-//               act
+//         act
         String bestHand = handEvaluator.getBestHand(Arrays.asList("D2", "D2", "D3", "D4", "D5"));
 //        assert
         Assertions.assertEquals("flush", bestHand);
@@ -68,8 +67,8 @@ class HandEvaluatorTest {
     @Test
     void shouldBeAbleToGetCorrectBestHandIfHandIsFullHouse() throws InvalidCardDeckException,
             CardNotFoundException {
-//               act
-        String bestHand = handEvaluator.getBestHand(Arrays.asList("D2", "Si2", "D3", "D3", "D3"));
+//        act
+        String bestHand = handEvaluator.getBestHand(Arrays.asList("D2", "S2", "D3", "D3", "D3"));
 //        assert
         Assertions.assertEquals("full-house", bestHand);
     }
@@ -77,26 +76,37 @@ class HandEvaluatorTest {
     @Test
     void shouldBeAbleToGetCorrectBestHandIfHandIsAPair() throws InvalidCardDeckException,
             CardNotFoundException {
-//               act
+//        act
         String bestHand = handEvaluator.getBestHand(Arrays.asList("D2", "S2", "DA", "DK", "DJ"));
 //        assert
-        Assertions.assertEquals("full-house", bestHand);
+        Assertions.assertEquals("pair", bestHand);
     }
+
     @Test
     void shouldBeAbleToGetCorrectBestHandIsFourOfKind() throws InvalidCardDeckException,
             CardNotFoundException {
-//               act
+//        act
         String bestHand = handEvaluator.getBestHand(Arrays.asList("D2", "S2", "D2", "D2", "DJ"));
 //        assert
-        Assertions.assertEquals("full-house", bestHand);
+        Assertions.assertEquals("four-of-a-kind", bestHand);
     }
+
     @Test
     void shouldBeAbleToGetCorrectBestHandIsThreeOfKind() throws InvalidCardDeckException,
             CardNotFoundException {
-//               act
+//        act
         String bestHand = handEvaluator.getBestHand(Arrays.asList("D2", "S2", "D2", "DA", "DJ"));
 //        assert
-        Assertions.assertEquals("full-house", bestHand);
+        Assertions.assertEquals("three-of-a-kind", bestHand);
+    }
+
+    @Test
+    void shouldBeAbleToGetCorrectBestHandIsTwoPair() throws InvalidCardDeckException,
+            CardNotFoundException {
+//         act
+        String bestHand = handEvaluator.getBestHand(Arrays.asList("D2", "S2", "D4", "D4", "DJ"));
+//        assert
+        Assertions.assertEquals("two-pair", bestHand);
     }
 
 }

@@ -65,10 +65,7 @@ public class HandEvaluator {
             char secondChar = card.charAt(1);
             score.put(secondChar, score.getOrDefault(secondChar, 0) + 1);
         }
-
         return score.containsValue(4) && score.containsValue(1);
-
-
     }
 
     private boolean isFullHouse(List<String> cards) {
@@ -126,19 +123,45 @@ public class HandEvaluator {
     }
 
     private boolean isTwoPair(List<String> cards) {
-        return false;
-    }
-
-    private boolean isPair(List<String> cards) {
         Map<Character, Integer> score = new HashMap<>();
         for (String card : cards) {
             char secondChar = card.charAt(1);
             score.put(secondChar, score.getOrDefault(secondChar, 0) + 1);
         }
+        int count1 = 0;
+        int count2 = 0;
+        for (int value : score.values()) {
+            if (value == 1) {
+                count1++;
+            } else if (value == 2) {
+                count2++;
+            }
+        }
 
-        return (score.containsValue(1) && score.containsValue(2));
-
+        return count1 == 1 && count2 == 2;
     }
+
+    private boolean isPair(List<String> cards) {
+        Map<Character, Integer> score = new HashMap<>();
+        int count1 = 0;
+        int count2 = 0;
+
+        for (String card : cards) {
+            char secondChar = card.charAt(1);
+            score.put(secondChar, score.getOrDefault(secondChar, 0) + 1);
+        }
+
+        for (int value : score.values()) {
+            if (value == 1) {
+                count1++;
+            } else if (value == 2) {
+                count2++;
+            }
+        }
+
+        return count1 == 3 && count2 == 1;
+    }
+
 
     private String getHighCard(List<String> cards) {
         char bestHand = cards.get(cards.size() - 1).charAt(1);
