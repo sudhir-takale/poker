@@ -65,4 +65,13 @@ class HandEvaluatorTest {
         Assertions.assertEquals("flush", bestHand);
     }
 
+    @Test
+    void shouldBeAbleToGetCorrectBestHandIfHandIsFullHouse() throws InvalidCardDeckException,
+            CardNotFoundException {
+//               act
+        String bestHand = handEvaluator.getBestHand(Arrays.asList("D2", "S2", "D3", "D3", "D3"));
+//        assert
+        Assertions.assertEquals("full-house", bestHand);
+    }
+
 }
