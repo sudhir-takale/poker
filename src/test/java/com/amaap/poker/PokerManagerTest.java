@@ -1,5 +1,6 @@
 package com.amaap.poker;
 
+import com.amaap.poker.config.Deck;
 import com.amaap.poker.domain.Hand;
 import com.amaap.poker.domain.service.HandEvaluator;
 import com.amaap.poker.domain.service.exception.CardNotFoundException;
@@ -9,12 +10,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -23,6 +26,8 @@ public class PokerManagerTest {
     HandEvaluator handEvaluatorMock;
     @Mock
     Hand hand;
+    @Mock
+    Deck deck;
     @InjectMocks
     PokerManager pokerManager;
 
@@ -84,4 +89,5 @@ public class PokerManagerTest {
         // assert
         Assertions.assertEquals(expectedBestHand, actualBestHand);
     }
+
 }
