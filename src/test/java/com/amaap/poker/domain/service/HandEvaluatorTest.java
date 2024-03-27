@@ -31,7 +31,7 @@ class HandEvaluatorTest {
 
 
     @Test
-    void shouldBeAbleToGetBestHand() throws CardNotFoundException {
+    void shouldBeAbleToGetBestHand() throws CardNotFoundException, InvalidCardDeckException {
 //        act
         String bestHand = handEvaluator.getBestHand(Arrays.asList("S1", "S2", "S3", "S4", "S5"));
 //        assert

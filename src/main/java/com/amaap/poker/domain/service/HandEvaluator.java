@@ -2,6 +2,7 @@ package com.amaap.poker.domain.service;
 
 import com.amaap.poker.domain.service.exception.CardNotFoundException;
 import com.amaap.poker.domain.service.exception.InvalidCardDeckException;
+import com.amaap.poker.domain.service.validator.CardDeckValidator;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,8 +10,12 @@ import java.util.List;
 
 public class HandEvaluator {
     public String getBestHand(List<String> cards) throws CardNotFoundException, InvalidCardDeckException {
-        if (cards.isEmpty()) throw new CardNotFoundException("Card deck Can't be Empty!");
-        else if (cards.size() != 5) throw new InvalidCardDeckException("Card Deck is not Valid check number of cards!");
+
+        if (!CardDeckValidator.validate(cards)) {
+            throw new InvalidCardDeckException("Card Deck is not Valid check number of cards!");
+        }
+
+
         Collections.sort(cards, new Comparator<String>() {
             @Override
             public int compare(String card1, String card2) {
