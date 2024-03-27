@@ -48,6 +48,15 @@ public class HandEvaluator {
         }
     }
 
+    private Map<Character, Integer> getFilledCharactermMap(List<String> cards) {
+        Map<Character, Integer> score = new HashMap<>();
+        for (String card : cards) {
+            char secondChar = card.charAt(1);
+            score.put(secondChar, score.getOrDefault(secondChar, 0) + 1);
+        }
+        return score;
+    }
+
     private boolean isStraightFlush(List<String> cards) {
         boolean isStraight = isStraight(cards);
         Map<Character, Integer> score = new HashMap<>();
@@ -60,23 +69,13 @@ public class HandEvaluator {
     }
 
     private boolean isFourOfAKind(List<String> cards) {
-        Map<Character, Integer> score = new HashMap<>();
-        for (String card : cards) {
-            char secondChar = card.charAt(1);
-            score.put(secondChar, score.getOrDefault(secondChar, 0) + 1);
-        }
+        Map<Character, Integer> score = getFilledCharactermMap(cards);
         return score.containsValue(4) && score.containsValue(1);
     }
 
     private boolean isFullHouse(List<String> cards) {
-        Map<Character, Integer> score = new HashMap<>();
-        for (String card : cards) {
-            char secondChar = card.charAt(1);
-            score.put(secondChar, score.getOrDefault(secondChar, 0) + 1);
-        }
-
+        Map<Character, Integer> score = getFilledCharactermMap(cards);
         return score.containsValue(2) && score.containsValue(3);
-
     }
 
     private boolean isFlush(List<String> cards) {
@@ -90,82 +89,72 @@ public class HandEvaluator {
 
     private boolean isStraight(List<String> cards) {
         Set<Integer> distinctValues = new HashSet<>();
-
         for (String card : cards) {
             int value = card.charAt(1);
-            if (!distinctValues.contains(value)) {
-                distinctValues.add(value);
-            }
+            if (!distinctValues.contains(value)) distinctValues.add(value);
         }
+        return isSortedValues(distinctValues);
+    }
+
+    private boolean isSortedValues(Set<Integer> distinctValues) {
         if (distinctValues.size() == 5) {
             List<Integer> sortedValues = new ArrayList<>(distinctValues);
             Collections.sort(sortedValues);
             for (int i = 0; i < 4; i++) {
-                if (sortedValues.get(i + 1) - sortedValues.get(i) != 1) {
-                    return false;
-                }
+                if (sortedValues.get(i + 1) - sortedValues.get(i) != 1) return false;
             }
             return true;
         }
         return false;
-
     }
 
     private boolean isThreeOfAKind(List<String> cards) {
-
-        Map<Character, Integer> score = new HashMap<>();
-        for (String card : cards) {
-            char secondChar = card.charAt(1);
-            score.put(secondChar, score.getOrDefault(secondChar, 0) + 1);
+        Map<Character, Integer> score = getFilledCharactermMap(cards);
+        int countThree = 0;
+        for (int count : score.values()) {
+            if (count == 3) {
+                countThree++;
+            }
         }
-
-        return score.containsValue(1) && score.containsValue(3);
+        return countThree == 1;
     }
 
     private boolean isTwoPair(List<String> cards) {
-        Map<Character, Integer> score = new HashMap<>();
-        for (String card : cards) {
-            char secondChar = card.charAt(1);
-            score.put(secondChar, score.getOrDefault(secondChar, 0) + 1);
-        }
+        Map<Character, Integer> score = getFilledCharactermMap(cards);
         int count1 = 0;
         int count2 = 0;
         for (int value : score.values()) {
             if (value == 1) {
                 count1++;
-            } else if (value == 2) {
-                count2++;
-            }
+            } else if (value == 2) count2++;
         }
-
         return count1 == 1 && count2 == 2;
     }
 
     private boolean isPair(List<String> cards) {
-        Map<Character, Integer> score = new HashMap<>();
+        Map<Character, Integer> score = getFilledCharactermMap(cards);
         int count1 = 0;
         int count2 = 0;
-
-        for (String card : cards) {
-            char secondChar = card.charAt(1);
-            score.put(secondChar, score.getOrDefault(secondChar, 0) + 1);
-        }
-
         for (int value : score.values()) {
             if (value == 1) {
                 count1++;
-            } else if (value == 2) {
-                count2++;
-            }
+            } else if (value == 2) count2++;
         }
-
         return count1 == 3 && count2 == 1;
     }
 
-
     private String getHighCard(List<String> cards) {
         char bestHand = cards.get(cards.size() - 1).charAt(1);
-        return String.valueOf(bestHand);
+        return getBestHighCard(bestHand);
+    }
+
+    private String getBestHighCard(char bestHand) {
+        if (bestHand == 'K') return "king";
+        else if (bestHand == 'J') return "jack";
+        else if (bestHand == 'A') return "ace";
+        else if (bestHand == 'Q') return "queen";
+        else if (bestHand == 'T') return "ten";
+        else return String.valueOf(bestHand);
     }
 
 
