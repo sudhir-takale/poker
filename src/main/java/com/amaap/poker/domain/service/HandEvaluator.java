@@ -4,11 +4,14 @@ import com.amaap.poker.domain.service.exception.CardNotFoundException;
 import com.amaap.poker.domain.service.exception.InvalidCardDeckException;
 import com.amaap.poker.domain.service.validator.CardDeckValidator;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class HandEvaluator {
+    private static int getValue(char rank) {
+        String order = "23456789TJQKA";
+        return order.indexOf(rank);
+    }
+
     public String getBestHand(List<String> cards) throws CardNotFoundException, InvalidCardDeckException {
 
         if (!CardDeckValidator.validate(cards)) {
@@ -23,7 +26,6 @@ public class HandEvaluator {
                 return getValue(rank1) - getValue(rank2);
             }
         });
-        cards.forEach(System.out::println);
 
         if (isStraightFlush(cards)) {
             return "straight-flush";
@@ -46,7 +48,6 @@ public class HandEvaluator {
         }
     }
 
-
     private boolean isStraightFlush(List<String> cards) {
         return false;
     }
@@ -68,7 +69,24 @@ public class HandEvaluator {
     }
 
     private boolean isStraight(List<String> cards) {
+        Set<Integer> distinctValues = new HashSet<>();
 
+        for (String card : cards) {
+            int value = card.charAt(1);
+            if (!distinctValues.contains(value)) {
+                distinctValues.add(value);
+            }
+        }
+        if (distinctValues.size() == 5) {
+            List<Integer> sortedValues = new ArrayList<>(distinctValues);
+            Collections.sort(sortedValues);
+            for (int i = 0; i < 4; i++) {
+                if (sortedValues.get(i + 1) - sortedValues.get(i) != 1) {
+                    return false;
+                }
+            }
+            return true;
+        }
         return false;
 
     }
@@ -91,10 +109,6 @@ public class HandEvaluator {
     private String getHighCard(List<String> cards) {
         char bestHand = cards.get(cards.size() - 1).charAt(1);
         return String.valueOf(bestHand);
-    }
-    private static int getValue(char rank) {
-        String order = "23456789TJQKA";
-        return order.indexOf(rank);
     }
 
 

@@ -39,5 +39,13 @@ class HandEvaluatorTest {
         Assertions.assertEquals("high-card-A", bestHand);
     }
 
+    @Test
+    void shouldBeAbleToGetCorrectBestHandIfCardAreIsStraight() throws InvalidCardDeckException, CardNotFoundException {
+//               act
+        String bestHand = handEvaluator.getBestHand(Arrays.asList("S1", "S2", "S3", "S4", "S5"));
+//        assert
+        Assertions.assertEquals("straight", bestHand);
+    }
+
 
 }
