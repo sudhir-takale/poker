@@ -1,4 +1,5 @@
-![image](https://github.com/sudhir-takale/poker/assets/93988135/bf15c45f-d57b-43bb-bbcf-fcb6f13f823e)
+![image](https://github.com/sudhir-takale/poker/assets/93988135/b2deaf07-eb87-41c9-870c-2f8c22139308)
+
 
 
 
@@ -34,23 +35,27 @@ Change the poker program to include following new hand rankings: <br>
    - Hand 
       - states 
       - List<String> cards
-      - allocateCards
 
    - BestHandCalculator 
       - evaluateBestHand(list<string> cards)
-      - all methods to check for best hand
+      - all methods to check for the best hand
+  - Service
+       - Calculate all best hand separately
      
    - PokerManager 
       - allocateCards
       - getBestHand(List<String>cards)
-   
+   - Ranking enum
+      - store rank 
 
 - Process :
-- create Configurations for 52 cards
+- Create configurations for 52 cards
    - fill the cards list randomly 
 - create hand classes
    - method to fill cards
+- create enum Ranking which stores the ranking of the cards
 - evaluateBestHand(list<string> cards)
+     - has separate class to calculate rak
 - displayTheBestHand
 
 -------------------------------------------------------------------------------------------------------------
