@@ -1,11 +1,11 @@
-package com.amaap.poker.config;
+package com.amaap.poker.util;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Deck {
 
-    private List<String> cardDeck;
+    private final List<String> cardDeck;
 
     public Deck() {
         this.cardDeck = new ArrayList<>();

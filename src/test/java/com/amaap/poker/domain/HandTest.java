@@ -1,5 +1,6 @@
 package com.amaap.poker.domain;
 
+import com.amaap.poker.domain.model.Hand;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

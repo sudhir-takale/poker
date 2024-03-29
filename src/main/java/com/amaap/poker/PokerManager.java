@@ -1,7 +1,7 @@
 package com.amaap.poker;
 
-import com.amaap.poker.config.Deck;
-import com.amaap.poker.domain.Hand;
+import com.amaap.poker.util.Deck;
+import com.amaap.poker.domain.model.Hand;
 import com.amaap.poker.domain.service.HandEvaluator;
 import com.amaap.poker.domain.service.exception.CardNotFoundException;
 import com.amaap.poker.domain.service.exception.InvalidCardDeckException;
@@ -32,7 +32,6 @@ public class PokerManager {
     }
 
     public String getBestHand() throws InvalidCardDeckException, CardNotFoundException {
-//        List<String> cards = allocateCards();
         return handEvaluator.getBestHand(hand.getCards());
     }
 

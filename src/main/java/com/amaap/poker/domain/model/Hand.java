@@ -1,4 +1,4 @@
-package com.amaap.poker.domain;
+package com.amaap.poker.domain.model;
 
 import java.util.ArrayList;
 import java.util.List;

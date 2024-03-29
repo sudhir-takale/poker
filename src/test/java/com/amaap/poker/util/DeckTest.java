@@ -1,4 +1,4 @@
-package com.amaap.poker.config;
+package com.amaap.poker.util;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

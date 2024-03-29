@@ -1,6 +1,5 @@
 package com.amaap.poker.domain.service;
 
-import com.amaap.poker.domain.Hand;
 import com.amaap.poker.domain.service.exception.CardNotFoundException;
 import com.amaap.poker.domain.service.exception.InvalidCardDeckException;
 import org.junit.jupiter.api.Assertions;
@@ -29,7 +28,7 @@ class HandEvaluatorTest {
 //        act
         String bestHand = handEvaluator.getBestHand(Arrays.asList("S2", "D5", "C7", "ST", "HA"));
 //        assert
-        Assertions.assertEquals("high-card-ace", bestHand);
+        Assertions.assertEquals("high_card_ace", bestHand);
     }
 
     @Test
@@ -45,7 +44,7 @@ class HandEvaluatorTest {
 //        act
         String bestHand = handEvaluator.getBestHand(Arrays.asList("S1", "S2", "S3", "S4", "S5"));
 //        assert
-        Assertions.assertEquals("straight-flush", bestHand);
+        Assertions.assertEquals("straight_flush", bestHand);
     }
 
     @Test
@@ -61,7 +60,7 @@ class HandEvaluatorTest {
 //        act
         String bestHand = handEvaluator.getBestHand(Arrays.asList("D2", "S2", "D3", "D3", "D3"));
 //        assert
-        Assertions.assertEquals("full-house", bestHand);
+        Assertions.assertEquals("full_house", bestHand);
     }
 
     @Test
@@ -77,7 +76,7 @@ class HandEvaluatorTest {
 //        act
         String bestHand = handEvaluator.getBestHand(Arrays.asList("D2", "S2", "D2", "D2", "DJ"));
 //        assert
-        Assertions.assertEquals("four-of-a-kind", bestHand);
+        Assertions.assertEquals("four_of_a_kind", bestHand);
     }
 
     @Test
@@ -85,7 +84,7 @@ class HandEvaluatorTest {
 //        act
         String bestHand = handEvaluator.getBestHand(Arrays.asList("D2", "S2", "D2", "DA", "DJ"));
 //        assert
-        Assertions.assertEquals("three-of-a-kind", bestHand);
+        Assertions.assertEquals("three_of_a_kind", bestHand);
     }
 
     @Test
@@ -93,7 +92,7 @@ class HandEvaluatorTest {
 //         act
         String bestHand = handEvaluator.getBestHand(Arrays.asList("D2", "S2", "D4", "D4", "DJ"));
 //        assert
-        Assertions.assertEquals("two-pair", bestHand);
+        Assertions.assertEquals("two_pair", bestHand);
     }
 
 }
