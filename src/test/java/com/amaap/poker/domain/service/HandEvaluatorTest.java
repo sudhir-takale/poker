@@ -33,6 +33,12 @@ class HandEvaluatorTest {
     }
 
     @Test
+    void shouldNotThrowInvalidCardDeckExceptionWhenListOfCardsIsEmpty() {
+//       act & assert
+        Assertions.assertDoesNotThrow(() -> handEvaluator.getBestHand(Arrays.asList("S2", "D5", "HA","D5", "HA")));
+    }
+
+    @Test
     void shouldBeAbleToGetHighHandForCorrectInput() throws CardNotFoundException, InvalidCardDeckException {
 //        act
         String bestHand = handEvaluator.getBestHand(Arrays.asList("S2", "D5", "C7", "ST", "HA"));

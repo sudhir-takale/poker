@@ -4,12 +4,12 @@ import com.amaap.poker.domain.model.Hand;
 import com.amaap.poker.domain.service.HandEvaluator;
 import com.amaap.poker.domain.service.exception.CardNotFoundException;
 import com.amaap.poker.domain.service.exception.InvalidCardDeckException;
-import com.amaap.poker.util.Deck;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
@@ -24,6 +24,7 @@ public class PokerManagerTest {
     HandEvaluator handEvaluator;
     @Mock
     Hand hand;
+
 
     @InjectMocks
     PokerManager pokerManager;
@@ -95,20 +96,18 @@ public class PokerManagerTest {
         // assert
         Assertions.assertEquals(expectedBestHand, actualBestHand);
     }
-//
-//    @Test
-//    void shouldBeAbleToPassAlwaysShuffledDeckOfCards() {
-////        arrange
-//        Deck deck = new Deck();
-//        List<String> card = new ArrayList<>(Arrays.asList("CK", "D7", "C7", "DK", "SA"));
-//        when(deck.getCardDeck()).thenReturn(card);
-//        when(hand.getCards()).thenReturn(new ArrayList<>());
-//        when(hand.getCards()).thenReturn(card);
-////        act
-//        List<String> actual = pokerManager.allocateCards();
-////        assert
-//        Assertions.assertEquals(card, actual);
-//    }
-//
+
+    @Test
+    public void testAllocateCards() {
+//        arrange
+        List<String> card = Arrays.asList("CK", "D7", "C7", "DK", "SA");
+        List<String> handList = Mockito.spy(new ArrayList<>());
+        when(hand.getCards()).thenReturn(handList);
+//      act
+        List<String> allocatedCards = pokerManager.allocateCards();
+//      arrange
+        Assertions.assertEquals(handList, allocatedCards);
+        Assertions.assertEquals(5, handList.size());
+    }
 
 }
