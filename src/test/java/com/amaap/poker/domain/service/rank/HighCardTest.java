@@ -36,8 +36,38 @@ class HighCardTest {
         String highcard = HighCard.getBestHighCard('K');
 //        assert
         assertEquals("king", highcard);
+    }
 
+    @Test
+    void shouldReturnQueenWhenValidCharacterIsPassed() {
+//        arrange & act
+        String highcard = HighCard.getBestHighCard('Q');
+//        assert
+        assertEquals("queen", highcard);
+    }
 
+    @Test
+    void shouldReturnJackWhenValidCharacterIsPassed() {
+//        arrange & act
+        String highcard = HighCard.getBestHighCard('J');
+//        assert
+        assertEquals("jack", highcard);
+    }
+
+    @Test
+    void shouldReturnTenWhenValidCharacterIsPassed() {
+//        arrange & act
+        String highcard = HighCard.getBestHighCard('T');
+//        assert
+        assertEquals("ten", highcard);
+    }
+
+    @Test
+    void shouldReturnEightWhenValidCharacterIsPassed() {
+//        arrange & act
+        String highcard = HighCard.getBestHighCard('8');
+//        assert
+        assertEquals("8", highcard);
     }
 
 }

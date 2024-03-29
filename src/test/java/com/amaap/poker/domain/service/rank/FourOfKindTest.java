@@ -5,37 +5,38 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class FourOfKindTest {
 
     @Test
     void shouldReturnTrueWhenValidFourOfAKindCardsPassed() {
         // arrange
-        List<String> fourOfAKindCards = Arrays.asList("H2", "D2", "S2", "C2", "H6");
+        List<String> cards = Arrays.asList("H2", "D2", "S2", "C2", "H6");
         // act
-        boolean isFourOfAKind = FourOfKind.isFourOfAKind(fourOfAKindCards);
+        boolean isFourOfAKind = FourOfKind.isFourOfAKind(cards);
         // assert
-        assertTrue(isFourOfAKind, "Expected four of a kind");
+        assertTrue(isFourOfAKind);
     }
 
     @Test
     void shouldReturnFalseWhenInvalidCardDeckPassed() {
         // arrange
-        List<String> invalidCards = Arrays.asList("H2", "D2", "S3", "C4", "H5");
+        List<String> cards = Arrays.asList("H2", "D2", "S3", "C4", "H5");
         // act
-        boolean isFourOfAKind = FourOfKind.isFourOfAKind(invalidCards);
+        boolean isFourOfAKind = FourOfKind.isFourOfAKind(cards);
         // assert
-        assertFalse(isFourOfAKind, "Expected not four of a kind");
+        assertFalse(isFourOfAKind);
     }
 
     @Test
     void shouldReturnFalseWhenNotFourOfAKindCardsPassed() {
         // arrange
-        List<String> notFourOfAKindCards = Arrays.asList("H2", "D2", "S3", "C2", "H6");
+        List<String> cards = Arrays.asList("H2", "D2", "S3", "C2", "H6");
         // act
-        boolean isFourOfAKind = FourOfKind.isFourOfAKind(notFourOfAKindCards);
+        boolean isFourOfAKind = FourOfKind.isFourOfAKind(cards);
         // assert
-        assertFalse(isFourOfAKind, "Expected not four of a kind");
+        assertFalse(isFourOfAKind);
     }
 }

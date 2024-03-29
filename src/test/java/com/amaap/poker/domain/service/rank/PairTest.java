@@ -12,25 +12,25 @@ class PairTest {
 
     @Test
     void shouldReturnTrueWhenValidPairCardsPassed() {
-        // Arrange & Act
-        List<String> pairCards = Arrays.asList("H2", "D2", "S3", "C4", "H5");
-        // Assert
-        assertTrue(Pair.isPair(pairCards), "Expected pair");
+        // arrange & act
+        List<String> cards = Arrays.asList("H2", "D2", "S3", "C4", "H5");
+        // assert
+        assertTrue(Pair.isPair(cards));
     }
 
     @Test
     void shouldReturnFalseWhenInvalidCardDeckPassed() {
-        // Arrange & Act
-        List<String> notPairCards = Arrays.asList("H2", "D3", "S4", "C5", "H6");
-        // Assert
-        assertFalse(Pair.isPair(notPairCards), "Expected not pair");
+        // arrange & act
+        List<String> cards = Arrays.asList("H2", "D3", "S4", "C5", "H6");
+        // assert
+        assertFalse(Pair.isPair(cards));
     }
 
     @Test
     void shouldReturnFalseWhenNotPairCardsPassed() {
-        // Arrange & Act
-        List<String> notPairCards = Arrays.asList("H2", "D2", "S2", "C3", "H3");
-        // Assert
-        assertFalse(Pair.isPair(notPairCards), "Expected not pair");
+        // arrange & act
+        List<String> cards = Arrays.asList("H2", "D2", "S2", "C3", "H3");
+        // assert
+        assertFalse(Pair.isPair(cards));
     }
 }

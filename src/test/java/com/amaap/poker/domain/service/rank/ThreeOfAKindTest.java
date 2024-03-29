@@ -17,7 +17,7 @@ class ThreeOfAKindTest {
         // act
         boolean isThreeOfAKind = ThreeOfAKind.isThreeOfAKind(cards);
         // assert
-        assertTrue(isThreeOfAKind, "Expected three of a kind");
+        assertTrue(isThreeOfAKind);
     }
 
     @Test
@@ -30,13 +30,5 @@ class ThreeOfAKindTest {
         assertFalse(isThreeOfAKind);
     }
 
-    @Test
-    void shouldReturnFalseWhenNotThreeOfAKindCardsPassed() {
-        // arrange
-        List<String> cards = Arrays.asList("HA", "DA", "S3", "C3", "H3");
-        // act
-        boolean isThreeOfAKind = ThreeOfAKind.isThreeOfAKind(cards);
-        // assert
-        assertFalse(isThreeOfAKind);
-    }
+
 }

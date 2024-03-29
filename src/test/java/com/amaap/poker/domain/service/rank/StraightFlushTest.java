@@ -12,25 +12,25 @@ class StraightFlushTest {
 
     @Test
     void shouldReturnTrueWhenValidStraightFlushCardsPassed() {
-        // Arrange & Act
-        List<String> straightFlushCards = Arrays.asList("H2", "H3", "H4", "H5", "H6");
-        // Assert
-        assertTrue(StraightFlush.isStraightFlush(straightFlushCards), "Expected straight flush");
+        // arrange & act
+        List<String> cards = Arrays.asList("H2", "H3", "H4", "H5", "H6");
+        // assert
+        assertTrue(StraightFlush.isStraightFlush(cards));
     }
 
     @Test
     void shouldReturnFalseWhenInvalidCardDeckPassed() {
-        // Arrange & Act
-        List<String> notStraightFlushCards = Arrays.asList("H2", "D2", "S3", "C5", "H6");
-        // Assert
-        assertFalse(StraightFlush.isStraightFlush(notStraightFlushCards), "Expected not straight flush");
+        // arrange & act
+        List<String> cards = Arrays.asList("H2", "D2", "S3", "C5", "H6");
+        // assert
+        assertFalse(StraightFlush.isStraightFlush(cards));
     }
 
     @Test
     void shouldReturnFalseWhenNotStraightFlushCardsPassed() {
-        // Arrange & Act
-        List<String> notStraightFlushCards = Arrays.asList("H2", "H3", "H4", "H5", "D6");
-        // Assert
-        assertFalse(StraightFlush.isStraightFlush(notStraightFlushCards), "Expected not straight flush");
+        // arrange & act
+        List<String> cards = Arrays.asList("H2", "H3", "H4", "H5", "D6");
+        // assert
+        assertFalse(StraightFlush.isStraightFlush(cards));
     }
 }

@@ -14,13 +14,22 @@ class HandEvaluatorTest {
     @Test
     void shouldThrowCardNotFoundExceptionWhenListOfCardsIsEmpty() {
 //       act & assert
-        Assertions.assertThrows(CardNotFoundException.class, () -> handEvaluator.getBestHand(new ArrayList<>()), "Card Deck can't be Empty !");
+        Assertions.assertThrows(CardNotFoundException.class,
+                () -> handEvaluator.getBestHand(new ArrayList<>()), "Card Deck can't be Empty !");
+    }
+
+    @Test
+    void shouldThrowInvalidCardDeckExceptionWhenCardDeckSizeIsNotEqualToFive() {
+//       act & assert
+        Assertions.assertThrows(InvalidCardDeckException.class,
+                () -> handEvaluator.getBestHand(new ArrayList<>(Arrays.asList("S2", "D5", "HA"))), "Card Deck is not Valid check number of cards!");
     }
 
     @Test
     void shouldThrowInvalidCardDeckExceptionWhenListOfCardsIsEmpty() {
 //       act & assert
-        Assertions.assertThrows(InvalidCardDeckException.class, () -> handEvaluator.getBestHand(Arrays.asList("S2", "D5", "HA")), "Card Deck is not Valid, check number of cards!");
+        Assertions.assertThrows(InvalidCardDeckException.class,
+                () -> handEvaluator.getBestHand(Arrays.asList("S2", "D5", "HA")), "Card Deck is not Valid, check number of cards!");
     }
 
     @Test

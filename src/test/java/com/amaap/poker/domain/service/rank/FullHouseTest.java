@@ -12,25 +12,25 @@ class FullHouseTest {
 
     @Test
     void shouldReturnTrueWhenValidFullHouseCardsPassed() {
-        // Arrange & Act
-        List<String> fullHouseCards = Arrays.asList("H2", "D2", "S2", "C3", "H3");
-        // Assert
-        assertTrue(FullHouse.isFullHouse(fullHouseCards), "Expected full house");
+        // arrange & act
+        List<String> cards = Arrays.asList("H2", "D2", "S2", "C3", "H3");
+        // assert
+        assertTrue(FullHouse.isFullHouse(cards));
     }
 
     @Test
     void shouldReturnFalseWhenInvalidCardDeckPassed() {
-        // Arrange & Act
-        List<String> notFullHouseCards = Arrays.asList("H2", "D2", "S3", "C4", "H5");
-        // Assert
-        assertFalse(FullHouse.isFullHouse(notFullHouseCards), "Expected not full house");
+        // arrange & act
+        List<String> cards = Arrays.asList("H2", "D2", "S3", "C4", "H5");
+        // assert
+        assertFalse(FullHouse.isFullHouse(cards));
     }
 
     @Test
     void shouldReturnFalseWhenNotFullHouseCardsPassed() {
-        // Arrange & Act
-        List<String> notFullHouseCards = Arrays.asList("H2", "D2", "S2", "C5", "H6");
-        // Assert
-        assertFalse(FullHouse.isFullHouse(notFullHouseCards), "Expected not full house");
+        // arrange & act
+        List<String> cards = Arrays.asList("H2", "D2", "S2", "C5", "H6");
+        // assert
+        assertFalse(FullHouse.isFullHouse(cards));
     }
 }
