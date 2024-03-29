@@ -10,12 +10,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class PokerManager {
-    private Hand hand;
-    private HandEvaluator handEvaluator;
-
-    public PokerManager(Hand hand, HandEvaluator handEvaluator) {
-        this.hand = hand;
-        this.handEvaluator = handEvaluator;
+    private static PokerManager pokerManager;
+    private  static HandEvaluator handEvaluator =  HandEvaluator.getHandEvaluator();
+    private Hand hand = Hand.getInstance();
+    public static synchronized PokerManager getInstance() {
+        if (pokerManager == null)
+            pokerManager = new PokerManager();
+        return pokerManager;
     }
 
     public List<String> allocateCards() {

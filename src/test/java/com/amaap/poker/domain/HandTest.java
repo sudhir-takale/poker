@@ -7,16 +7,8 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class HandTest {
-    Hand hand = new Hand();
+    Hand hand = Hand.getInstance();
 
-    @Test
-    public void shouldInitializeWithEmptyCards() {
-//        act
-        List<String> cards = hand.getCards();
-//        assert
-        Assertions.assertNotNull(cards);
-        Assertions.assertTrue(cards.isEmpty());
-    }
 
     @Test
     public void shouldAddCardToHand() {

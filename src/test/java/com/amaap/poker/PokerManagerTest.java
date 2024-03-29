@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import javax.print.attribute.HashDocAttributeSet;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,7 +34,7 @@ public class PokerManagerTest {
     @Test
     void shouldBeAbleToCreateHand() {
 //        arrange & act
-        Hand hand = new Hand();
+        Hand hand = Hand.getInstance();
 //        assert
         Assertions.assertNotNull(hand);
     }
@@ -76,11 +77,10 @@ public class PokerManagerTest {
 //        arrange
         List<String> cards = Arrays.asList("CK", "D7", "C7", "DK", "SA");
         when(hand.getCards()).thenReturn(cards);
-        when(handEvaluator.getBestHand(cards)).thenReturn("pair");
 //        act
         String bestHand = pokerManager.getBestHand();
 //        assert
-        Assertions.assertEquals("pair", bestHand);
+        Assertions.assertEquals("two_pair", bestHand);
     }
 
 
@@ -89,8 +89,7 @@ public class PokerManagerTest {
         // arrange
         List<String> cards = Arrays.asList("CK", "D7", "C7", "DK", "SA");
         when(hand.getCards()).thenReturn(cards);
-        String expectedBestHand = "pair";
-        when(handEvaluator.getBestHand(cards)).thenReturn(expectedBestHand);
+        String expectedBestHand = "two_pair";
         // act
         String actualBestHand = pokerManager.getBestHand();
         // assert

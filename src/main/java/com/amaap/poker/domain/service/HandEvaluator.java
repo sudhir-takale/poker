@@ -9,9 +9,18 @@ import com.amaap.poker.domain.service.validator.CardDeckValidator;
 import java.util.List;
 
 public class HandEvaluator {
+    private static HandEvaluator handEvaluator;
+
     private static int getValue(char rank) {
         String order = "23456789TJQKA";
         return order.indexOf(rank);
+    }
+
+    public static HandEvaluator getHandEvaluator() {
+        if (handEvaluator == null) {
+            handEvaluator = new HandEvaluator();
+        }
+        return handEvaluator;
     }
 
     public String getBestHand(List<String> cards) throws CardNotFoundException, InvalidCardDeckException {
