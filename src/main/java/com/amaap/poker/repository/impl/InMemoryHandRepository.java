@@ -25,4 +25,9 @@ public class InMemoryHandRepository implements HandRepository {
     public List<Hand> getHandList() {
         return inMemoryDatabase.getHandList();
     }
+
+    @Override
+    public Hand getHand() {
+        return inMemoryDatabase.getHand();
+    }
 }

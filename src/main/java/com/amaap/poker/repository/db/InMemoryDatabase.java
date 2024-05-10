@@ -15,4 +15,6 @@ public interface InMemoryDatabase {
     Hand insert(Hand hand);
 
     List<Hand> getHandList();
+
+    Hand getHand();
 }

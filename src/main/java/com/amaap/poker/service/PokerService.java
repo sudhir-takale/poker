@@ -23,4 +23,5 @@ public class PokerService {
         return bestHandEvaluator.evaluateHand(hands.get(0));
 
     }
+
 }

@@ -42,4 +42,9 @@ public class FakeInMemoryDatabase implements InMemoryDatabase {
     public List<Hand> getHandList() {
         return this.hands;
     }
+
+    @Override
+    public Hand getHand() {
+        return hands.get(0);
+    }
 }

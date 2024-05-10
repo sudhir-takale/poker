@@ -2,6 +2,8 @@ package com.amaap.poker.service;
 
 import com.amaap.poker.domain.model.entity.Card;
 import com.amaap.poker.domain.model.entity.Hand;
+import com.amaap.poker.domain.model.valueobject.Rank;
+import com.amaap.poker.domain.service.BestHandEvaluator;
 import com.amaap.poker.repository.HandRepository;
 import com.google.inject.Inject;
 
@@ -27,4 +29,10 @@ public class HandService {
     public List<Hand> getAllHand() {
         return handRepository.getHandList();
     }
+
+    private Hand getHand() {
+        return handRepository.getHand();
+    }
+
+
 }

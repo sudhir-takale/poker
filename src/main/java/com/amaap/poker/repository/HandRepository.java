@@ -8,4 +8,6 @@ public interface HandRepository {
     Hand add(Hand hand);
 
     List<Hand> getHandList();
+
+    Hand getHand();
 }
