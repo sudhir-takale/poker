@@ -1,5 +1,3 @@
-![image](https://github.com/sudhir-takale/poker/assets/93988135/b2deaf07-eb87-41c9-870c-2f8c22139308)
-
 # Poker Best Hand Extension
 
 Change the poker program to include following new hand rankings: <br>
@@ -26,42 +24,59 @@ Example ["S2" "D5" "C7" "ST" "HA"] should return, "high-card-ace"
 
 
 ------------------------------------------------------------------------------------------------------
+#### What I used to solve this problem 
+  - Used visitor design pattern as it fits perfectly within the problem
+  - Used Google Guice for dependency injection for testcases as well as main classes 
 
-- Classes :
+
+
+## Domain :
+### Model
     - Hand
-        - states
+        - id
         - List<String> cards
+    - Card
+        - id
+        - card
+        
 
-    - BestHandCalculator
-        - evaluateBestHand(list<string> cards)
-        - all methods to check for the best hand
-    - Service
-        - Calculate all best hand separately
-          Rank:
-        - TwoPair
-            - isTwoPair(list<string> cards)
-        - Pair()
-            - isPair(list<string> cards)
-        - Straight
-            - isStraight(list<string> cards)
-        - Flush
-            - isFlush(list<string> cards)
-        - StraightFlush
-          isStraightFlush(List<string> cards)
-    - PokerManager
-        - allocateCards
-        - getBestHand(List<String>cards)
-    - Ranking enum
-        - store rank
+### Service
+  - Calculate best hand 
 
-- Process :
-- Create configurations for 52 cards
-    - fill the cards list randomly
-- create hand classes
-    - method to fill cards
-- create enum Ranking which stores the ranking of the cards
-- evaluateBestHand(list<string> cards)
-    - has separate class to calculate rak
-- displayTheBestHand
+    Rank:
+      - TwoPair
+          - isTwoPair(list<string> cards)
+      - Pair()
+          - isPair(list<string> cards)
+      - Straight
+          - isStraight(list<string> cards)
+      - Flush
+          - isFlush(list<string> cards)
+      - StraightFlush
+          - isStraightFlush(List<string> cards)
 
--------------------------------------------------------------------------------------------------------------
+#### Controller
+
+- CardController - creates cards 
+    - createANewCard() - it will create a new card with card type and rank
+    - getCard() - to get cards
+  
+- HandController - to create a hand
+    - createHand() - assign cards to hand
+    - evaluateBestHand()
+
+#### Service
+- CardService - perform operations related with cards
+  - createCard() - to create a new card
+  - getCard() - to get cards
+  
+- HandService - assign cards to hand and create a new hand
+  - evaluateBestHand() - to evaluate best hand and it will gives the best hand
+  - getCardsForHand()
+
+#### Repository
+- CardRepository - stores the cards 
+- HandRepository - stores the hand information
+
+#### Database
+- used fake in memory database to store the data
