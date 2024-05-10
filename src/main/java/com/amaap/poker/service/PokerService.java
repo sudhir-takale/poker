@@ -17,9 +17,10 @@ public class PokerService {
 
     public String getBestHand() {
         List<Hand> hands = handService.getAllHand();
+        BestHandEvaluator bestHandEvaluator = new BestHandEvaluator();
         for (Hand hand : hands) {
 
-            return BestHandEvaluator.evaluateHand(hand);
+            return bestHandEvaluator.evaluateHand(hand);
         }
         return "High Card";
     }

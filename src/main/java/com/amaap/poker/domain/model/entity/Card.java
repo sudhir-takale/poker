@@ -3,9 +3,9 @@ package com.amaap.poker.domain.model.entity;
 import java.util.Objects;
 
 public class Card {
-    private int id;
     private final String suit;
     private final String value;
+    private int id;
 
     public Card(String suit, String value) {
         this.suit = suit;
@@ -31,5 +31,9 @@ public class Card {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getValue() {
+        return this.value;
     }
 }
