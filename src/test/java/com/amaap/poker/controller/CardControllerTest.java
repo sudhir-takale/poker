@@ -36,7 +36,20 @@ public class CardControllerTest {
 
         // assert
         assertEquals(expected, actual);
-
-
     }
+
+    @Test
+    void shouldReturnBadRequestIfSuitIsInvalid() {
+        // arrange
+        String suit = "";
+        String value = "5";
+        Response expected = new Response(HttpStatus.BAD_REQUEST, "failed");
+
+        // act
+        Response actual = cardController.create(suit, value);
+
+        // assert
+        assertEquals(expected, actual);
+    }
+
 }
