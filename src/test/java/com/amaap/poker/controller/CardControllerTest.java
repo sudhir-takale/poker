@@ -1,5 +1,6 @@
 package com.amaap.poker.controller;
 
+import com.amaap.poker.PokerModule;
 import com.amaap.poker.controller.dto.HttpStatus;
 import com.amaap.poker.controller.dto.Response;
 import com.google.inject.Guice;
