@@ -1,5 +1,5 @@
 package com.amaap.poker.controller.dto;
 
 public enum HttpStatus {
-    OK
+    BAD_REQUEST, OK
 }
