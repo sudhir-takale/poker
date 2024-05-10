@@ -2,6 +2,7 @@ package com.amaap.poker.repository;
 
 import com.amaap.poker.PokerModule;
 import com.amaap.poker.domain.model.entity.Card;
+import com.amaap.poker.repository.impl.InMemoryCardRepository;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;

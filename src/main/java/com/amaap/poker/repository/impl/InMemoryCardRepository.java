@@ -1,6 +1,7 @@
-package com.amaap.poker.repository;
+package com.amaap.poker.repository.impl;
 
 import com.amaap.poker.domain.model.entity.Card;
+import com.amaap.poker.repository.CardRepository;
 import com.amaap.poker.repository.db.InMemoryDatabase;
 import com.google.inject.Inject;
 
