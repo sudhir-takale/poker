@@ -6,6 +6,8 @@ import com.amaap.poker.service.exception.InvalidCardException;
 import com.amaap.poker.service.validator.CardValidator;
 import com.google.inject.Inject;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CardService {
@@ -27,5 +29,15 @@ public class CardService {
 
     public List<Card> getAllCards() {
         return cardRepository.getAllCards();
+    }
+
+    public List<Card> getCards() {
+        List<Card> allCards = getAllCards();
+        Collections.shuffle(allCards);
+        List<Card> cards = new ArrayList<>();
+        for (int i = 0; i < Math.min(5, allCards.size()); i++) {
+            cards.add(allCards.get(i));
+        }
+        return cards;
     }
 }

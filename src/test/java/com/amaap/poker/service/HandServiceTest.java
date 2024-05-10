@@ -9,6 +9,8 @@ import com.google.inject.Injector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HandServiceTest {
@@ -42,6 +44,20 @@ class HandServiceTest {
 
         // assert
         assertEquals("H", hand.getCards().get(0).getSuit());
+
+    }
+
+    @Test
+    void shouldBeAbleToGetAllHands() {
+        // arrange
+        Hand hand = handService.create();
+        handService.create();
+
+        // act
+        List<Hand> hands = handService.getAllHand();
+
+        // assert
+        assertEquals(2, hands.size());
 
     }
 

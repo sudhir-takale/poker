@@ -8,19 +8,23 @@ import com.google.inject.Inject;
 import java.util.List;
 
 public class HandService {
-    private final PokerService pokerService;
+    private final CardService cardService;
     private final HandRepository handRepository;
 
     @Inject
-    public HandService(PokerService pokerService, HandRepository handRepository) {
-        this.pokerService = pokerService;
+    public HandService(CardService cardService, HandRepository handRepository) {
+        this.cardService = cardService;
         this.handRepository = handRepository;
     }
 
     public Hand create() {
-        List<Card> cards = pokerService.getCards();
+        List<Card> cards = cardService.getCards();
         Hand hand = new Hand();
         hand.setCards(cards);
         return handRepository.add(hand);
+    }
+
+    public List<Hand> getAllHand() {
+        return handRepository.getHandList();
     }
 }

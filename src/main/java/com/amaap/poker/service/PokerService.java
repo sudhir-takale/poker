@@ -1,28 +1,26 @@
 package com.amaap.poker.service;
 
-import com.amaap.poker.domain.model.entity.Card;
+import com.amaap.poker.domain.model.entity.Hand;
+import com.amaap.poker.domain.service.BestHandEvaluator;
 import com.google.inject.Inject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PokerService {
 
-    private final CardService cardService;
     private final HandService handService;
 
     @Inject
-    public PokerService(CardService cardService, HandService handService) {
-        this.cardService = cardService;
+    public PokerService(HandService handService) {
         this.handService = handService;
     }
 
-    public List<Card> getCards() {
-        List<Card> allCards = cardService.getAllCards();
-        List<Card> cards = new ArrayList<>();
-        for (int i = 0; i < Math.min(5, allCards.size()); i++) {
-            cards.add(allCards.get(i));
+    public String getBestHand() {
+        List<Hand> hands = handService.getAllHand();
+        for (Hand hand : hands) {
+
+            return BestHandEvaluator.evaluateHand(hand);
         }
-        return cards;
+        return "High Card";
     }
 }
