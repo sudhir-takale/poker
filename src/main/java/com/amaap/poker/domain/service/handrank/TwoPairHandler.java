@@ -2,6 +2,7 @@ package com.amaap.poker.domain.service.handrank;
 
 import com.amaap.poker.domain.model.entity.Card;
 import com.amaap.poker.domain.model.entity.Hand;
+import com.amaap.poker.domain.model.valueobject.Rank;
 import com.amaap.poker.domain.service.HandRankHandler;
 
 import java.util.HashMap;
@@ -18,7 +19,7 @@ public class TwoPairHandler implements HandRankHandler {
     }
 
     @Override
-    public String evaluateHand(Hand hand) {
+    public Rank evaluateHand(Hand hand) {
         List<Card> cards = hand.getCards();
 
         Map<String, Integer> valueCounts = new HashMap<>();
@@ -35,7 +36,7 @@ public class TwoPairHandler implements HandRankHandler {
         }
 
         if (pairCount == 2) {
-            return "Two Pair";
+            return Rank.TWOPAIR;
         } else {
             return successor.evaluateHand(hand);
         }

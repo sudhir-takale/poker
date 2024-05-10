@@ -2,6 +2,7 @@ package com.amaap.poker.domain.service.handrank;
 
 import com.amaap.poker.domain.model.entity.Card;
 import com.amaap.poker.domain.model.entity.Hand;
+import com.amaap.poker.domain.model.valueobject.Rank;
 import com.amaap.poker.domain.service.HandRankHandler;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class FullHouseHandler implements HandRankHandler {
     }
 
     @Override
-    public String evaluateHand(Hand hand) {
+    public Rank evaluateHand(Hand hand) {
         List<Card> cards = hand.getCards();
         Map<String, Long> valueCounts = cards.stream().collect(Collectors.groupingBy(Card::getValue, Collectors.counting()));
 
@@ -34,7 +35,7 @@ public class FullHouseHandler implements HandRankHandler {
         }
 
         if (hasThreeOfAKind && hasPair) {
-            return "Full House";
+            return Rank.FULLHOUSE;
         } else {
             return successor.evaluateHand(hand);
         }

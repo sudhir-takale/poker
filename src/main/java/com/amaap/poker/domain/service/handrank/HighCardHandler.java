@@ -2,6 +2,7 @@ package com.amaap.poker.domain.service.handrank;
 
 import com.amaap.poker.domain.model.entity.Card;
 import com.amaap.poker.domain.model.entity.Hand;
+import com.amaap.poker.domain.model.valueobject.Rank;
 import com.amaap.poker.domain.service.HandRankHandler;
 
 import java.util.Collections;
@@ -17,14 +18,12 @@ public class HighCardHandler implements HandRankHandler {
     }
 
     @Override
-    public String evaluateHand(Hand hand) {
+    public Rank evaluateHand(Hand hand) {
         List<Card> cards = hand.getCards();
 
         Collections.sort(cards, (c1, c2) -> getValueRank(c2.getValue()) - getValueRank(c1.getValue()));
 
-        Card highestCard = cards.get(0);
-        return "High Card " + highestCard.getValue();
-
+        return Rank.HIGHCARD;
 
     }
 

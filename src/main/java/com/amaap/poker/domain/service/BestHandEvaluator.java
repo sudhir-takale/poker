@@ -1,6 +1,7 @@
 package com.amaap.poker.domain.service;
 
 import com.amaap.poker.domain.model.entity.Hand;
+import com.amaap.poker.domain.model.valueobject.Rank;
 import com.amaap.poker.domain.service.handrank.*;
 
 public class BestHandEvaluator {
@@ -32,7 +33,7 @@ public class BestHandEvaluator {
         threeOfAKindHandler.setSuccessor(highCardHandler);
     }
 
-    public String evaluateHand(Hand hand) {
+    public Rank evaluateHand(Hand hand) {
 
         return firstHandler.evaluateHand(hand);
 

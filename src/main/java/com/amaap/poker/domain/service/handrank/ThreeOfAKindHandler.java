@@ -2,6 +2,7 @@ package com.amaap.poker.domain.service.handrank;
 
 import com.amaap.poker.domain.model.entity.Card;
 import com.amaap.poker.domain.model.entity.Hand;
+import com.amaap.poker.domain.model.valueobject.Rank;
 import com.amaap.poker.domain.service.HandRankHandler;
 
 import java.util.HashMap;
@@ -18,7 +19,7 @@ public class ThreeOfAKindHandler implements HandRankHandler {
     }
 
     @Override
-    public String evaluateHand(Hand hand) {
+    public Rank evaluateHand(Hand hand) {
         List<Card> cards = hand.getCards();
 
         Map<String, Integer> valueCounts = new HashMap<>();
@@ -29,7 +30,7 @@ public class ThreeOfAKindHandler implements HandRankHandler {
 
         for (Map.Entry<String, Integer> entry : valueCounts.entrySet()) {
             if (entry.getValue() == 3) {
-                return "Three of a Kind";
+                return Rank.THREEOFAKIND;
             }
         }
 

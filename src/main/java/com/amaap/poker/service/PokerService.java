@@ -1,6 +1,7 @@
 package com.amaap.poker.service;
 
 import com.amaap.poker.domain.model.entity.Hand;
+import com.amaap.poker.domain.model.valueobject.Rank;
 import com.amaap.poker.domain.service.BestHandEvaluator;
 import com.google.inject.Inject;
 
@@ -15,13 +16,11 @@ public class PokerService {
         this.handService = handService;
     }
 
-    public String getBestHand() {
+    public Rank getBestHand() {
         List<Hand> hands = handService.getAllHand();
         BestHandEvaluator bestHandEvaluator = new BestHandEvaluator();
-        for (Hand hand : hands) {
 
-            return bestHandEvaluator.evaluateHand(hand);
-        }
-        return "High Card";
+        return bestHandEvaluator.evaluateHand(hands.get(0));
+
     }
 }

@@ -2,6 +2,7 @@ package com.amaap.poker.domain.service.handrank;
 
 import com.amaap.poker.domain.model.entity.Card;
 import com.amaap.poker.domain.model.entity.Hand;
+import com.amaap.poker.domain.model.valueobject.Rank;
 import com.amaap.poker.domain.service.HandRankHandler;
 
 import java.util.Collections;
@@ -17,7 +18,7 @@ public class StraightFlushHandler implements HandRankHandler {
     }
 
     @Override
-    public String evaluateHand(Hand hand) {
+    public Rank evaluateHand(Hand hand) {
 
         List<Card> cards = hand.getCards();
 
@@ -35,7 +36,7 @@ public class StraightFlushHandler implements HandRankHandler {
         boolean isSameSuit = cards.stream().allMatch(card -> card.getSuit().equals(suit));
 
         if (isConsecutive && isSameSuit) {
-            return "Straight Flush";
+            return Rank.STRAIGHTFLUSH;
         } else {
             return successor.evaluateHand(hand);
         }

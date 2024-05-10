@@ -1,6 +1,7 @@
 package com.amaap.poker.service;
 
 import com.amaap.poker.PokerModule;
+import com.amaap.poker.domain.model.valueobject.Rank;
 import com.amaap.poker.service.exception.InvalidCardException;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
@@ -32,19 +33,57 @@ class PokerServiceTest {
     @Test
     void shouldBeAbleToEvaluateBestHand() throws InvalidCardException {
         // arrange
-        cardService.create("H", "3");
-        cardService.create("S", "3");
-        cardService.create("H", "8");
-        cardService.create("H", "4");
+        cardService.create("D", "5");
+        cardService.create("S", "2");
+        cardService.create("C", "7");
+        cardService.create("S", "T");
         cardService.create("H", "A");
         handService.create();
 
         // act
-        String bestHand = pokerService.getBestHand();
+        Rank bestHand = pokerService.getBestHand();
 
         // assert
-        assertEquals("Rank", bestHand);
+        assertEquals(Rank.HIGHCARD, bestHand);
 
     }
+    @Test
+    void shouldBeAbleToEvaluateBestHandAsFlush() throws InvalidCardException {
+        // arrange
+        cardService.create("D", "5");
+        cardService.create("D", "2");
+        cardService.create("D", "7");
+        cardService.create("D", "T");
+        cardService.create("D", "A");
+        handService.create();
+
+        // act
+        Rank bestHand = pokerService.getBestHand();
+
+        // assert
+        assertEquals(Rank.FLUSH, bestHand);
+    }
+
+    @Test
+    void shouldBeAbleToEvaluateBestHandAsStraight() throws InvalidCardException {
+        // arrange
+        cardService.create("D", "2");
+        cardService.create("H", "3");
+        cardService.create("C", "4");
+        cardService.create("S", "5");
+        cardService.create("H", "6");
+        handService.create();
+
+        // act
+        Rank bestHand = pokerService.getBestHand();
+
+        // assert
+        assertEquals(Rank.STRAIGHT, bestHand);
+    }
+
+
+
+
+
 
 }
