@@ -25,9 +25,14 @@ Example ["S2" "D5" "C7" "ST" "HA"] should return, "high-card-ace"
 
 ------------------------------------------------------------------------------------------------------
 #### What I used to solve this problem 
-  - Used visitor design pattern as it fits perfectly within the problem
+  - Used chain of responsibility design pattern as it fits perfectly within the problem
   - Used Google Guice for dependency injection for testcases as well as main classes 
 
+##### assumptions
+- PokerService
+  - it is used to keep track of history for future 
+  - and also it will take all hand and call domain service to get best hand
+  - currently not implemented repository for poker service
 
 
 ## Domain :
@@ -35,10 +40,15 @@ Example ["S2" "D5" "C7" "ST" "HA"] should return, "high-card-ace"
     - Hand
         - id
         - List<String> cards
+
     - Card
         - id
-        - card
-        
+        - suit
+        - value
+
+    - Rank
+        - PAIR
+        - FLUSH etc
 
 ### Service
   - Calculate best hand 
@@ -57,15 +67,23 @@ Example ["S2" "D5" "C7" "ST" "HA"] should return, "high-card-ace"
 
 #### Controller
 
+- PokerController - it is used to call to get the best hand 
+  - it will also call to the domain service to get best hand 
+  - poker controller is used to keep track of hand and it result for future 
+  - currently I don't implemented repository for pokerController 
+  
 - CardController - creates cards 
     - createANewCard() - it will create a new card with card type and rank
     - getCard() - to get cards
   
 - HandController - to create a hand
     - createHand() - assign cards to hand
-    - evaluateBestHand()
+    - getAllHand()  - to get all hands
 
 #### Service
+- PokerService -
+  - it will call to the domain service and get the best hand
+  
 - CardService - perform operations related with cards
   - createCard() - to create a new card
   - getCard() - to get cards
